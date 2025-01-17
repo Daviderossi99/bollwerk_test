@@ -208,7 +208,16 @@ div.mat-mdc-select-panel {
   border-radius: 8px;
 }
 
-.drag-drop {
+.chat-message {
+  min-height: 30px;
+  max-width: 300px;
+  background-color: #0d1019 !important;
+  border:0.25px solid #282727;
+  border-radius: 16px;
+  padding: 0.4rem;
+}
+
+.card-borderless {
   background-color: #0d1019 !important;
   border-radius: 8px;
 }
@@ -243,6 +252,11 @@ textarea:focus {
 
 textarea::placeholder {
   vertical-align:middle;
+}
+
+.container {
+  white-space: normal; 
+  overflow-wrap: break-word;
 }
 
 .big-icon-button {

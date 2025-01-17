@@ -33,6 +33,12 @@ import { MatRippleModule } from '@angular/material/core';
 export class AppComponent {
   title = 'bollwerk-app';
 
+  chat : {sender:string,message:string}[] = []
+
+  message : string = '';
+  
+  chatActive : boolean = false;
+
   tiles = [
     {title:'Presentation Wizard',description:'Create awesome, beatiful presentation within seconds'},
     {title:'Due Diligence',description:'Create awesome, beatiful presentation within seconds'},
@@ -52,5 +58,20 @@ export class AppComponent {
   selectedLlm = this.llms[0]
 
   constructor(public screenService : ScreenService) {} 
+
+  sendMessage() {
+    if (this.chat.length == 0 && this.message != '')
+      this.chatActive = true
+    if (this.message != '') {
+      this.chat.push({sender:'user',message:this.message})
+      this.chat.push({sender:'bot',message:'Hi! This is an automatic response!'})
+      this.message = ''
+    }
+  }
+
+  clearChat() {
+    this.chat = []
+    this.chatActive = false;
+  }
 
 }
