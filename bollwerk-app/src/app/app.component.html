@@ -1,10 +1,78 @@
-<mat-drawer-container class="primary h-100">
-    <mat-drawer>
-    </mat-drawer>
-    <div class="h-100 primary d-flex-col">
-        <mat-select class="my-auto mt-3" [value]="appTypes[0]">
-            <mat-option *ngFor="let item of appTypes">{{item}}</mat-option>
-        </mat-select>
-        <h1 class="accent my-auto mt-3">Welcome Back, Oisin</h1>
+<div class="h-100 primary d-flex-col" [style.overflow]="'auto'">
+    <div class="d-flex-row w-100" [style.height]="'6%'" [style.border-bottom]="'0.25px solid #434040'">
+        <div class="mr-auto accent my-auto ml-3 smalltext">INFERENCE</div>
+        <button mat-button class="ml-auto my-auto mr-3">
+            <mat-icon>add</mat-icon>
+            <h4 [style.font-weight]="'400'">
+                NEW CHAT
+            </h4>
+        </button>
     </div>
-</mat-drawer-container>
+    <div class="d-flex-row mx-auto">
+        <div class="accent smalltext my-auto" [style.text-align]="'center'" [style.min-width]="'280px'">SELECT APPLICATION</div>
+        <mat-form-field class="my-auto mt-3" [style.min-width]="'360px'" [style.width]="(this.screenService.calcWidth(1,'1rem') | async)!">
+            <mat-select value="Chat">
+                <mat-option value="Chat">Chat</mat-option>
+                <mat-option *ngFor="let item of tiles" value="item.title">{{item.title}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <h1 class="accent mx-auto mt-3">Welcome Back, Oisin</h1>
+    <div class="mb-auto mx-auto w-60">
+        <div matRipple class="drag-drop d-flex-row hover" [style.height]="'80px'">
+            <mat-icon mat-icon-button class="big-icon mx-3 my-auto">cloud_upload</mat-icon>
+            <div class="d-flex-col">
+                <h4 class="mt-auto mb-0 accent" [style.font-weight]="'400'" >Drag and drop file here or select Source/Workspace</h4>
+                <div class="d-flex-row mb-auto mt-2 mb-3">
+                    <h5 class="mr-1 my-0" [style.font-weight]="'400'" [style.color]="'#c50e0e'">Limit 50MB </h5>
+                    <h5 class="my-0" [style.font-weight]="'400'" [style.color]="'#696666'">per file/workspace - 28 Filetypes supported</h5>
+                </div>
+            </div>
+            <h4 class="ml-auto my-auto mr-3" [style.font-weight]="'400'" [style.font-size]="'14px'" [style.color]="'#696666'">
+                BROWSE
+            </h4>
+        </div>
+        <mat-grid-list [cols]="screenService.cols | async" [rowHeight]="'130px'" [gutterSize]="'1rem'" class="mt-3">
+            <mat-grid-tile class="card hover" *ngFor="let tile of tiles" matRipple>
+                <div class="d-flex-col mx-3">
+                    <div class="d-flex-row">
+                        <mat-icon [style.min-width]="'24px'" class="accent" [style.text-align]="'left'">monitor</mat-icon>
+                        <h4 class="my-auto accent mr-3 w-100" [style.text-align]="'center'" >{{tile.title}}</h4>
+                    </div>
+                    <h5 class="mx-1" [style.color]="'#828282'" >{{tile.description}}</h5>
+                </div>       
+            </mat-grid-tile>
+        </mat-grid-list>
+        <div [style.height]="'20%'"></div>
+        <mat-form-field class="mt-auto" [style.min-width]="'260px'" [style.width]="(this.screenService.calcWidth(4,'1rem') | async)!">
+            <mat-select [(value)]="selectedLlm">
+                
+                <mat-select-trigger>
+                    <div class="d-flex-row" [style.height]="'24px'">
+                        <mat-icon class="accent mr-1">{{ selectedLlm.icon }}</mat-icon>
+                        <h5 class="my-auto mr-1">{{ selectedLlm.name }}</h5>
+                        <h5 class="my-auto" [style.color]="'#828282'" [style.font-weight]="300">{{ selectedLlm.number }}</h5>
+                    </div>
+                </mat-select-trigger>
+
+                <mat-option [style.height]="'24px'" *ngFor="let llm of llms" [value]="llm">
+                    <mat-icon class="accent">{{ llm.icon }}</mat-icon>
+                    <div class="d-flex-row">
+                        <h5 [style.font-weight]="500" class="mr-1">{{ llm.name }}</h5>
+                        <h5 [style.color]="'#828282'" [style.font-weight]="300">{{ llm.number }}</h5>
+                    </div>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="drag-drop d-flex-row" [style.height]="'120px'">
+            <button mat-icon-button class=" mx-3 my-auto big-icon-button">   
+                <mat-icon mat-icon-button >attachment</mat-icon>
+            </button>
+            <textarea class="w-100" placeholder="Enter your new prompt here if you have new questions" ></textarea>
+            <button mat-icon-button class=" mx-3 my-auto big-icon-button-2">   
+                <mat-icon mat-icon-button>arrow_upward</mat-icon>
+            </button>
+        </div>
+        
+    </div> 
+</div>
