@@ -1,7 +1,10 @@
 <mat-drawer-container class="primary h-100">
     <mat-drawer>
     </mat-drawer>
-    <div class="h-100">
-        <h1 class="accent">Welcome Back, Oisin</h1>
+    <div class="h-100 primary d-flex-col">
+        <mat-select class="my-auto mt-3" [value]="appTypes[0]">
+            <mat-option *ngFor="let item of appTypes">{{item}}</mat-option>
+        </mat-select>
+        <h1 class="accent my-auto mt-3">Welcome Back, Oisin</h1>
     </div>
 </mat-drawer-container>
