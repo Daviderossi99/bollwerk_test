@@ -9,8 +9,17 @@
         </button>
     </div>
     <div [class]="screenService.sizes['screen-x-small'] ? 'd-flex-col mx-auto' : 'd-flex-row mx-auto'">
-        <div class="accent smalltext mb-auto" [style.margin-top]="screenService.sizes['screen-x-small'] ? '0.33rem' : 'auto'" [style.text-align]="'center'" [style.min-width]="'280px'">SELECT APPLICATION</div>
-        <mat-form-field class="my-auto mt-3" [style.min-width]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small']   ? '300px' : '360px'" [style.width]="(this.screenService.calcWidth(1,'1rem') | async)!">
+        <div 
+            class="accent smalltext mb-auto" 
+            [style.margin-top]="screenService.sizes['screen-x-small'] ? '0.33rem' : 'auto'" 
+            [style.text-align]="'center'" 
+            [style.min-width]="'280px'">
+            SELECT APPLICATION
+        </div>
+        <mat-form-field 
+            class="my-auto mt-3" 
+            [style.min-width]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small']   ? '300px' : '360px'" 
+            [style.width]="(this.screenService.calcWidth(1,'1rem') | async)!">
             <mat-select value="Chat">
                 <mat-option value="Chat">Chat</mat-option>
                 <mat-option *ngFor="let item of tiles" value="item.title">{{item.title}}</mat-option>
@@ -19,7 +28,8 @@
     </div>
     <div *ngIf="!chatActive" class="d-flex-col">
         <h1 [style.color]="'white'" [style.font-size]="screenService.sizes['screen-x-small'] ? '30px' : ''" class="mx-auto mt-3">Welcome Back, Oisin</h1>
-        <div class="mb-auto mx-auto" [style.width]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small'] || screenService.sizes['screen-medium'] ? '96%' : '50%'">
+        <div class="mb-auto mx-auto" 
+            [style.width]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small'] || screenService.sizes['screen-medium'] ? '96%' : '50%'">
             <div matRipple class="card-borderless d-flex-row hover" [style.height]="'80px'">
                 <mat-icon mat-icon-button class="big-icon mx-3 my-auto">cloud_upload</mat-icon>
                 <div class="d-flex-col">
@@ -48,14 +58,21 @@
             </div>
         </div>
     </div>
-    <div *ngIf="chatActive" class="mx-auto d-flex-col" [style.height]="'65%'" [style.overflow-y]="'auto'" [style.width]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small'] || screenService.sizes['screen-medium'] ? '96%' : '50%'">
+    <div *ngIf="chatActive" class="mx-auto d-flex-col" 
+        [style.height]="'65%'" [style.overflow-y]="'auto'" 
+        [style.width]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small'] || screenService.sizes['screen-medium'] ? '96%' : '50%'">
         <button  mat-icon-button class="big-icon-button" (click)="clearChat()" [style.background-color]="'#282727'">   
             <mat-icon mat-icon-button>arrow_left</mat-icon>
         </button>
         <div  class="d-flex-col" [style.overflow-y]="'auto'">
             <div *ngFor="let item of chat" [style.margin-left]="item.sender == 'bot' ? '' : 'auto'" [style.margin-right]="item.sender == 'user' ? '' : 'auto'">
                 <div class="chat-message d-flex-row my-3 container">
-                    <div class="d-flex-row" [style.width]="'34px'" [style.height]="'34px'" class="mr-1 my-auto" *ngIf="item.sender == 'bot'" [style.border-radius]="'40px'" [style.background-color]="'#282727'">
+                    <div *ngIf="item.sender == 'bot'"  
+                        class="mr-1 my-auto" 
+                        [style.width]="'34px'" 
+                        [style.height]="'34px'" 
+                        [style.border-radius]="'40px'" 
+                        [style.background-color]="'#282727'">
                         <mat-icon class="accent ml-1 mt-1">language</mat-icon>
                     </div>
                     <p class="my-auto accent" [style.max-width]="'300px'" [style.font-weight]="'500'">{{item.message}}</p>
@@ -65,7 +82,8 @@
 
     </div>
     <div class="mx-auto w-100" [style.position]="'absolute'" [style.bottom]="0">
-        <div class="mx-auto mb-2" [style.width]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small'] || screenService.sizes['screen-medium'] ? '100%' : '50%'">
+        <div class="mx-auto mb-2" 
+            [style.width]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small'] || screenService.sizes['screen-medium'] ? '100%' : '50%'">
             <mat-form-field class="mt-auto ml-1" [style.min-width]="'260px'" [style.width]="(this.screenService.calcWidth(4,'1rem') | async)!" [style.max-width]="'260px'">
                 <mat-select [(value)]="selectedLlm">
                     <mat-select-trigger>
@@ -85,7 +103,10 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <div [class]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small'] || screenService.sizes['screen-medium'] ? 'mx-3 inputbox d-flex-row' : 'card-borderless d-flex-row'" [style.height]="'120px'">
+            <div [class]="screenService.sizes['screen-x-small'] || 
+                screenService.sizes['screen-small'] || 
+                screenService.sizes['screen-medium'] ? 'mx-3 inputbox d-flex-row' : 'card-borderless d-flex-row'" 
+                [style.height]="'120px'">
                 <button mat-icon-button class=" mx-3 my-auto big-icon-button">   
                     <mat-icon mat-icon-button >attachment</mat-icon>
                 </button>
