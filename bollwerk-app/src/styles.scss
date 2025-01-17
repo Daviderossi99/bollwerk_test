@@ -222,6 +222,12 @@ div.mat-mdc-select-panel {
   border-radius: 8px;
 }
 
+.inputbox {
+  background-color: #0d1222 !important;
+  border-radius: 8px;
+}
+
+
 .big-icon {
   color: rgb(226, 219, 219);
   font-size: 36px;
@@ -238,7 +244,7 @@ textarea {
   color: white;
   max-height:60px;
   min-height:60px;
-  background-color: #0d1019;
+  background-color: #0d1222;
   border: 0;
   font-family: Roboto,"Helvetica Neue",sans-serif;
   resize: none;

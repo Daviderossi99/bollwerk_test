@@ -10,7 +10,7 @@
     </div>
     <div [class]="screenService.sizes['screen-x-small'] ? 'd-flex-col mx-auto' : 'd-flex-row mx-auto'">
         <div class="accent smalltext mb-auto" [style.margin-top]="screenService.sizes['screen-x-small'] ? '0.33rem' : 'auto'" [style.text-align]="'center'" [style.min-width]="'280px'">SELECT APPLICATION</div>
-        <mat-form-field class="my-auto mt-3" [style.min-width]="screenService.sizes['screen-x-small'] ? '300px' : '360px'" [style.width]="(this.screenService.calcWidth(1,'1rem') | async)!">
+        <mat-form-field class="my-auto mt-3" [style.min-width]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small']   ? '300px' : '360px'" [style.width]="(this.screenService.calcWidth(1,'1rem') | async)!">
             <mat-select value="Chat">
                 <mat-option value="Chat">Chat</mat-option>
                 <mat-option *ngFor="let item of tiles" value="item.title">{{item.title}}</mat-option>
@@ -18,7 +18,7 @@
         </mat-form-field>
     </div>
     <div *ngIf="!chatActive" class="d-flex-col">
-        <h1 [style.font-size]="screenService.sizes['screen-x-small'] ? '30px' : ''" class="accent mx-auto mt-3">Welcome Back, Oisin</h1>
+        <h1 [style.color]="'white'" [style.font-size]="screenService.sizes['screen-x-small'] ? '30px' : ''" class="mx-auto mt-3">Welcome Back, Oisin</h1>
         <div class="mb-auto mx-auto" [style.width]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small'] || screenService.sizes['screen-medium'] ? '96%' : '50%'">
             <div matRipple class="card-borderless d-flex-row hover" [style.height]="'80px'">
                 <mat-icon mat-icon-button class="big-icon mx-3 my-auto">cloud_upload</mat-icon>
@@ -85,7 +85,7 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <div [class]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small'] || screenService.sizes['screen-medium'] ? 'mx-3 card-borderless d-flex-row' : 'card-borderless d-flex-row'" [style.height]="'120px'">
+            <div [class]="screenService.sizes['screen-x-small'] || screenService.sizes['screen-small'] || screenService.sizes['screen-medium'] ? 'mx-3 inputbox d-flex-row' : 'card-borderless d-flex-row'" [style.height]="'120px'">
                 <button mat-icon-button class=" mx-3 my-auto big-icon-button">   
                     <mat-icon mat-icon-button >attachment</mat-icon>
                 </button>
