@@ -74,4 +74,11 @@ export class AppComponent {
     this.chatActive = false;
   }
 
+  onKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      this.sendMessage()
+    }
+  }
+
 }

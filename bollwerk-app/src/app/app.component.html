@@ -110,8 +110,8 @@
                 <button mat-icon-button class=" mx-3 my-auto big-icon-button">   
                     <mat-icon mat-icon-button >attachment</mat-icon>
                 </button>
-                <textarea class="w-100" placeholder="Enter your new prompt here if you have new questions" [(ngModel)]="message"></textarea>
-                <button mat-icon-button class=" mx-3 my-auto big-icon-button-2" (click)="sendMessage()" (keyup)="'sendMessage()'">   
+                <textarea class="w-100" placeholder="Enter your new prompt here if you have new questions" [(ngModel)]="message" (keydown)="onKeyDown($event)"></textarea>
+                <button mat-icon-button class=" mx-3 my-auto big-icon-button-2" (click)="sendMessage()">   
                     <mat-icon mat-icon-button>arrow_upward</mat-icon>
                 </button>
             </div>
